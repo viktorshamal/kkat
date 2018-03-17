@@ -6,7 +6,7 @@ public class CollisionScript : MonoBehaviour {
 	public bool onTrampoline = false;
 	public bool inSpeedZone = false;
 
-	public Vector3 lastCheckpointPosition;
+	public Vector3 lastCheckpointPosition = new Vector3(10,1,0);
 
 	void OnTriggerEnter(Collider col) {
 		if(col.gameObject.CompareTag("Trampoline")) {

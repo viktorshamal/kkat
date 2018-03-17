@@ -25,12 +25,13 @@ public class CatMoves : MonoBehaviour {
 	public float jumpSpeed = 8.0F;
 	public float topJumpSpeed = 40f;
 	public float gravity = 20.0F;
+	public bool isFlying = false;
 	private Vector3 moveDirection = Vector3.zero;
 
 	void Update() {
 		CharacterController controller = GetComponent<CharacterController>();
 
-		if (controller.isGrounded) {
+		if (controller.isGrounded || isFlying) {
 			moveDirection = new Vector3(0, 0, CnInputManager.GetAxis("Vertical"));
 			moveDirection = transform.TransformDirection(moveDirection);
 

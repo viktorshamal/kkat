@@ -2,11 +2,19 @@
 using System.Collections;
 
 public class Mouse : MonoBehaviour {
-	public Transform destination;
-
+	public Transform[] destinations;
+	private int i = 0;
+	UnityEngine.AI.NavMeshAgent agent;
 	// Use this for initialization
 	void Start () {
-		NavMeshAgent agent = GetComponent<NavMeshAgent> ();
-		agent.destination = destination.position;
+		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
+		agent.destination = destinations[0].position;
+	}
+
+	void Update() {
+		if(!agent.hasPath && i + 1 < destinations.Length  ) {
+			i++;
+			agent.destination = destinations[i].position;
+		}
 	}
 }
